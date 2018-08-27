@@ -24,18 +24,22 @@ public class InvoiceWebsevicesRestApplicationTests {
     @Autowired
     private InvoiceRepository invoiceRepository;
     
+	 /*
+	  * 
+	  * Test insert and get an invoice
+	  * 
+	*/
     @Test
     public void addInvoice() {
       
     	Invoice inv = new Invoice();
-    	inv.setClient("ayanda");
+    	inv.setClient("lucky");
     	inv.setVatRate(15l);
         entityManager.persist(inv);
         entityManager.flush();
      
         // when
         Invoice invoice = invoiceRepository.getOne(inv.getId());
-     
         // then
         assertEquals(invoice.getId(), inv.getId());
 
